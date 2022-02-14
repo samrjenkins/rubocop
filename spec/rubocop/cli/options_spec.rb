@@ -1123,13 +1123,13 @@ RSpec.describe 'RuboCop::CLI options', :isolated_environment do # rubocop:disabl
            '  Description: Consistent indentation either with tabs only or spaces only.',
            '  Enabled: true',
            '  EnforcedStyle: spaces',
-           '  IndentationWidth:',
+           '  IndentationWidth: ',
            /^  StyleGuide: ('|")#spaces-indentation('|")$/,
            '  SupportedStyles:',
            '  - spaces',
            '  - tabs',
            /^  VersionAdded: '[0-9.]+'$/,
-           /^  VersionChanged: '[0-9.]+'\n\n\z/].join("\n")
+           /^  VersionChanged: '[0-9.]+'$\n\n\z/].join("\n")
         )
       end
 
@@ -1146,19 +1146,20 @@ RSpec.describe 'RuboCop::CLI options', :isolated_environment do # rubocop:disabl
       let(:arguments) { ['Layout/IndentationStyle,Lint/X123'] }
 
       it 'skips the unknown cop' do
+        binding.pry
         expect(stdout).to match(
           ['# Supports --auto-correct',
            'Layout/IndentationStyle:',
            '  Description: Consistent indentation either with tabs only or spaces only.',
            '  Enabled: true',
            '  EnforcedStyle: spaces',
-           '  IndentationWidth:',
+           '  IndentationWidth: ',
            /^  StyleGuide: ('|")#spaces-indentation('|")$/,
            '  SupportedStyles:',
            '  - spaces',
            '  - tabs',
            /^  VersionAdded: '[0-9.]+'$/,
-           /^  VersionChanged: '[0-9.]+'\n\n\z/].join("\n")
+           /^  VersionChanged: '[0-9.]+'$\n\n\z/].join("\n")
         )
       end
     end
